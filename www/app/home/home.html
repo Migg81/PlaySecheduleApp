@@ -1,11 +1,11 @@
 <ion-nav-bar  class="bar-balanced">
-    <h1 class="title">Play sechedule</h1>
+     <ion-nav-title>Play Schedule</ion-nav-title>
 </ion-nav-bar>
-<ion-tabs class="tabs-icon-top tabs-energized">
-    <ion-tab title="Language" icon="ion-home" href="#">
-        <ion-view ></ion-view>
+<ion-tabs class="tabs-energized tabs-icon-top ">
+    <ion-tab title="Leagues" icon="ion-home" ui-sref="home.leagues">
+        <ion-nav-view name="tab-leagues"></ion-view>
     </ion-tab>
-    <ion-tab title="My Teeam" icon="ion-star" href="#"> 
-        <ion-view ></ion-view>
+    <ion-tab title="My Teeam" icon="ion-star" ui-sref="home.myteams"> 
+        <ion-nav-view name="tab-myteams"></ion-view>
     </ion-tab>
 </ion-tabs>  
