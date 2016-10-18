@@ -74,15 +74,23 @@ angular.module('eliteApp', ['ionic'])
     url: '/teams',
     views:{
       "mainContent":{
-      templateUrl: 'app/teams/team-details.html',
+      templateUrl: 'app/teams/teams.html',
+      }
+    }
+    })
+    .state('app.team-detail', {
+    url: '/teams/:id',
+    views:{
+      "mainContent":{
+      templateUrl: 'app/teams/team-detail.html',
       }
     }
     })
     .state('app.games', {
-    url: '/games',
+    url: '/game/:id',
     views:{
       "mainContent":{
-      templateUrl: 'app/games/games.html',
+      templateUrl: 'app/game/game.html',
       }
     }  
   })
