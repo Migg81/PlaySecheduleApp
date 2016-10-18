@@ -42,9 +42,50 @@ angular.module('eliteApp', ['ionic'])
   })
    .state('app', {
     url: '/app',
+    abstract:true,
     templateUrl: 'app/layout/menu-layout.html',
   })
 
+.state('app.locations', {
+    url: '/locations',
+    views:{
+      "mainContent":{
+      templateUrl: 'app/locations/locations.html',
+      }
+    }
+})   
+  .state('app.rules', {
+    url: '/rules',
+    views:{
+      "mainContent":{
+      templateUrl: 'app/rules/rules.html',
+      }
+    }
+    }) 
+    .state('app.standings', {
+    url: '/standings',
+    views:{
+      "mainContent":{
+      templateUrl: 'app/standings/standings.html',
+      }
+      }
+    }) 
+    .state('app.teams', {
+    url: '/teams',
+    views:{
+      "mainContent":{
+      templateUrl: 'app/teams/team-details.html',
+      }
+    }
+    })
+    .state('app.games', {
+    url: '/games',
+    views:{
+      "mainContent":{
+      templateUrl: 'app/games/games.html',
+      }
+    }  
+  })
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/home/leagues');
+  $urlRouterProvider.otherwise('/app/teams');
 });
