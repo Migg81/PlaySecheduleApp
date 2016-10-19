@@ -90,7 +90,7 @@ angular.module('eliteApp', ['ionic'])
     url: '/game/:id',
     views:{
       "mainContent":{
-      templateUrl: 'app/game/game.html',
+      templateUrl: 'app/game/games.html',
       }
     }  
   })
