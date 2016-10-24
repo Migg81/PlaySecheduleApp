@@ -12,11 +12,11 @@ var teamdetailsCtrl = function ($stateParams,eliteApi) {
         vm.teamName=team.name;
         vm.games=_.chain(data.games).filter(isTeamInGame)
                     .map(function(item){
-                        var isTeam1=(item.teamId===vm.teamId?true:false)
+                        var isTeam1=(item.teamId===vm.teamId?true:false);
                         var opponentName=isTeam1?item.team2:item.team1;
                         var scoreDisplay=getScoreDisplay(isTeam1,item.team1Secore,item.team2Secore);
                         return{
-                            gameId=item.id,
+                            gameId:item.id,
                             opponent:opponentName,
                             time:item.time,
                             location:item.location,
@@ -26,7 +26,7 @@ var teamdetailsCtrl = function ($stateParams,eliteApi) {
                         }
                     }).value();
 
-        function   isTeamInGame(item)        
+        function isTeamInGame(item)        
         {
             return item.team1Id===vm.teamId||item.team2Id===vm.teamId;
         }  
