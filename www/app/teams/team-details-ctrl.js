@@ -8,9 +8,36 @@ var teamdetailsCtrl = function ($stateParams,eliteApi) {
 
     var getTeamdetailsData=function(data){
         var data=data;
-        var team=_.chain(data.teams).flatten("divisionTeams").find({"id":vm.teamId}).value();
+        //var team=_.chain(data.teams).flatten("divisionTeams").find({"id":vm.teamId}).value();
+
+    data.teams.forEach(function(note,index){
+      note.divisionTeams.find(function(d) {
+        if(d.id===vm.teamId)
+       team = d;
+     });
+    });
         vm.teamName=team.name;
-        vm.games=_.chain(data.games).filter(isTeamInGame)
+var kk=data.games.filter(isTeamInGame);
+
+        vm.games=data.games.filter(isTeamInGame)
+                    .map(function(item){
+                        var isTeam1=(item.team1Id===vm.teamId?true:false);
+                        var opponentName=isTeam1?item.team2:item.team1;
+                        var scoreDisplay=getScoreDisplay(isTeam1,item.team1Score,item.team2Score);
+                        return{
+                            gameId:item.id,
+                            opponent:opponentName,
+                            time:item.time,
+                            location:item.location,
+                            locationUrl:item.locationUrl,
+                            scoreDisplay:scoreDisplay,
+                            homeAway:(isTeam1?"vs.":"at")
+                        }
+                    });
+
+                    var tt=5+team.name;
+
+       /* vm.games=_.chain(data.games).filter(isTeamInGame)
                     .map(function(item){
                         var isTeam1=(item.teamId===vm.teamId?true:false);
                         var opponentName=isTeam1?item.team2:item.team1;
@@ -24,7 +51,7 @@ var teamdetailsCtrl = function ($stateParams,eliteApi) {
                             scoreDisplay:scoreDisplay,
                             homeAway:(isTeam1?"vs.":"at")
                         }
-                    }).value();
+                    }).value();*/
 
         function isTeamInGame(item)        
         {
