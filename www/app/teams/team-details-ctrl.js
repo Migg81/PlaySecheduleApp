@@ -16,10 +16,9 @@ var teamdetailsCtrl = function ($stateParams,eliteApi) {
        team = d;
      });
     });
-        vm.teamName=team.name;
-var kk=data.games.filter(isTeamInGame);
-
-        vm.games=data.games.filter(isTeamInGame)
+    
+    vm.teamName=team.name;
+    vm.games=data.games.filter(isTeamInGame)
                     .map(function(item){
                         var isTeam1=(item.team1Id===vm.teamId?true:false);
                         var opponentName=isTeam1?item.team2:item.team1;
@@ -34,24 +33,6 @@ var kk=data.games.filter(isTeamInGame);
                             homeAway:(isTeam1?"vs.":"at")
                         }
                     });
-
-                    var tt=5+team.name;
-
-       /* vm.games=_.chain(data.games).filter(isTeamInGame)
-                    .map(function(item){
-                        var isTeam1=(item.teamId===vm.teamId?true:false);
-                        var opponentName=isTeam1?item.team2:item.team1;
-                        var scoreDisplay=getScoreDisplay(isTeam1,item.team1Secore,item.team2Secore);
-                        return{
-                            gameId:item.id,
-                            opponent:opponentName,
-                            time:item.time,
-                            location:item.location,
-                            locationUrl:item.locationUrl,
-                            scoreDisplay:scoreDisplay,
-                            homeAway:(isTeam1?"vs.":"at")
-                        }
-                    }).value();*/
 
         function isTeamInGame(item)        
         {
