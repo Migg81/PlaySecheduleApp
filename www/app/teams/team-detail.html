@@ -3,11 +3,18 @@
         <div class="list">        
                 <a class="item item-icon-right" ng-repeat="game in vm.games" ui-sref="app.games({id:game.gameId})" >
                     <div class="row">
-                        <div></div>
-                        <div></div>
-                        <div></div>
+                        <div class="col-25">
+                            <p>{{game.time | date:'M/d/yy'}}</p>   
+                            <p>{{game.time | date:'shortTime'}}</p>   
+                        </div>
+                        <div class="col-50 col-center">
+                            <h3>{{game.homeAway}} {{game.opponent}}</h3>   
+                            <p>{{game.location}}</p>     
+                        </div>
+                        <div class="col-25 col-center">
+                            <h4 class="positive">{{game.scoreDisplay}}</h4>
+                        </div>
                     </div>
-                    {{game.opponent}}{{game.scoreDisplay}}
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </a>      
         </div>
