@@ -33,7 +33,16 @@ var teamdetailsCtrl = function ($stateParams,eliteApi) {
                             homeAway:(isTeam1?"vs.":"at")
                         }
                     });
-
+        
+        data.standings.forEach(function(note,index){
+            note.divisionStandings.find(function(d) {
+                if(d.teamId===vm.teamId)
+                {
+                    vm.teamStanding = d;
+                }
+            });
+        });
+        
         function isTeamInGame(item)        
         {
             return item.team1Id===vm.teamId||item.team2Id===vm.teamId;
