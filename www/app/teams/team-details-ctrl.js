@@ -1,7 +1,7 @@
 (function(){
 
 var app = angular.module("eliteApp");
-var teamdetailsCtrl = function ($stateParams,eliteApi) {
+var teamdetailsCtrl = function ($stateParams,$ionicPopup,eliteApi) {
     var vm=this;    
     console.log("stateParam",$stateParams);
     vm.teamId=Number($stateParams.id)
@@ -42,6 +42,24 @@ var teamdetailsCtrl = function ($stateParams,eliteApi) {
                 }
             });
         });
+
+        vm.following=false;
+        vm.toggleFollow=function(){
+            if(vm.following){
+                var confirmPopup=$ionicPopup.confirm({
+                    title:'Unfollow?',
+                    template:"Are you sure you want to unfollow?"
+                });
+                confirmPopup.then(function(res){
+                    if(res){
+                        vm.following=!vm.following;
+                    }
+                })
+            }else{
+                vm.following=!vm.following;
+            }
+
+        }
         
         function isTeamInGame(item)        
         {
