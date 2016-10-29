@@ -11,7 +11,7 @@
              </div>
         </div>
          <div class="card">
-            <ion-toggle ng-model="vm.following" toggle-class="toggle-calm"><h2>{{vm.following ? "Following" : "Not Following"}} </h2></ion-toggle>
+            <ion-toggle ng-model="vm.following" ng-click="vm.toggleFollow()" toggle-class="toggle-calm"><h2>{{vm.following ? "Following" : "Not Following"}} </h2></ion-toggle>
             <div class="item">
                 <h2>Record: {{vm.teamStanding.wins}} - {{vm.teamStanding.losses}}</h2>
             </div>                        

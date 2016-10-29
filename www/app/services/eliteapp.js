@@ -1,6 +1,6 @@
 (function() {
 
-var eliteApi=function($http){
+var eliteApi=function($http,$ionicLoading){
 
 var getLeagues=function (){
       return $http.get("http://elite-schedule.net/api/leaguedata")
@@ -10,6 +10,7 @@ var getLeagues=function (){
 };
 
 var getLeagueData=function (){
+    $ionicLoading.show({template:'Loding .....'});
      return $http.get("http://elite-schedule.net/api/leaguedata/2039")
             .then(function(response) {
                 return response.data;

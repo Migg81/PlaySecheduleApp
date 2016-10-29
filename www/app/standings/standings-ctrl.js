@@ -7,9 +7,11 @@
 
         var getStandingsData=function(data){
             vm.standings=data.standings;
+            $ionicLoading.hide();
         }
         var onError = function (reason) {
             $scope.error = "Somthing went wron try after some time.";
+            $ionicLoading.hide();
         };
         
         eliteApi.getLeagueData().then(getStandingsData, onError);
