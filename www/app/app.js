@@ -1,6 +1,6 @@
-angular.module('eliteApp', ['ionic'])
+angular.module('eliteApp', ['ionic','angular-cache'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,CacheFactory) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -13,6 +13,10 @@ angular.module('eliteApp', ['ionic'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    CacheFactory.createCache('leagueDataCache', {storageMode:"localStorage", deleteOnExpire: 'aggressive',maxAge: 60000 });
+    CacheFactory.createCache('leagueCache', {storageMode:"localStorage", deleteOnExpire: 'aggressive',maxAge: 60000 });
+    CacheFactory.createCache('myteamCache', {storageMode:"localStorage", deleteOnExpire: 'aggressive',maxAge: 60000 });
+    CacheFactory.createCache('staticCache', {storageMode:"localStorage", deleteOnExpire: 'aggressive',maxAge: 60000 });
   });
 })
 

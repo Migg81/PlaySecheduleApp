@@ -20,12 +20,13 @@
 
     vm.selectLeague=function (leaguid)
     {
-        //this need fix
+        //to do need fix we need send leaguid below code is not working
+        //eliteApi.setLeagueId(leaguid);
         $state.go("app.teams")
     };
 
     eliteApi.getLeagues().then(onLeaguesComplete, onError);
-    eliteApi.getLeagueData().then(onLeaguesDataComplete, onError);
+//    eliteApi.getLeagueData().then(onLeaguesDataComplete, onError);
     };
 
     app.controller('LeaguesCtrl', LeaguesCtrl);
