@@ -1,7 +1,7 @@
 (function(){
 
 var app = angular.module("eliteApp");
-var teamdetailsCtrl = function ($stateParams,$ionicPopup,$ionicLoading,eliteApi) {
+var teamdetailsCtrl = function ($stateParams,$ionicPopup,$ionicLoading,eliteApi,$scope,myTeamService) {
     var vm=this;    
     console.log("stateParam",$stateParams);
     vm.teamId=Number($stateParams.id)
@@ -11,11 +11,17 @@ var teamdetailsCtrl = function ($stateParams,$ionicPopup,$ionicLoading,eliteApi)
         data.teams.forEach(function(note,index){
         note.divisionTeams.find(function(d) {
             if(d.id===vm.teamId){
-                 team = d;
+                 vm.teamName=d.name;
+                 vm.team={
+                    id: d.id,
+                    name: d.name,
+                    coach: d.coach,
+                    leagueId:data.league.id,
+                    leagueName:data.league.name
+                 };
             }});
         });
-    
-        vm.teamName=team.name;
+
         vm.games=data.games.filter(isTeamInGame)
                 .map(function(item){
                     var isTeam1=(item.team1Id===vm.teamId?true:false);
@@ -68,7 +74,7 @@ var teamdetailsCtrl = function ($stateParams,$ionicPopup,$ionicLoading,eliteApi)
         
     eliteApi.getLeagueData().then(getTeamdetailsData, onError);
 
-    vm.following=false;
+    vm.following=myTeamService.isFollowingTeam(vm.teamId);
     vm.toggleFollow=function(){
             if(vm.following){
                 var confirmPopup=$ionicPopup.confirm({
@@ -78,10 +84,12 @@ var teamdetailsCtrl = function ($stateParams,$ionicPopup,$ionicLoading,eliteApi)
                 confirmPopup.then(function(res){
                     if(res){
                         vm.following=!vm.following;
+                        myTeamService.unfollowTeam(vm.team);
                     }
                 })
             }else{
                 vm.following=!vm.following;
+                myTeamService.followTeam(vm.team);
             }
         }
 }

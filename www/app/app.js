@@ -13,8 +13,8 @@ angular.module('eliteApp', ['ionic','angular-cache'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    CacheFactory.createCache('leagueDataCache', {storageMode:"localStorage", deleteOnExpire: 'aggressive',maxAge: 60000 });
-    CacheFactory.createCache('leagueCache', {storageMode:"localStorage", deleteOnExpire: 'aggressive',maxAge: 60000 });
+    CacheFactory.createCache('leagueDataCache', {storageMode:"localStorage", deleteOnExpire: 'aggressive',maxAge: 30000 });
+    CacheFactory.createCache('leagueCache', {storageMode:"localStorage", deleteOnExpire: 'aggressive',maxAge: 30000 });
     CacheFactory.createCache('myteamCache', {storageMode:"localStorage", deleteOnExpire: 'aggressive',maxAge: 60000 });
     CacheFactory.createCache('staticCache', {storageMode:"localStorage", deleteOnExpire: 'aggressive',maxAge: 60000 });
   });

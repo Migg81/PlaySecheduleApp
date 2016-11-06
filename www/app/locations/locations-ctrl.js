@@ -1,7 +1,7 @@
 (function(){
 
     var app = angular.module("eliteApp");
-    var locationCtrl = function (eliteApi) {
+    var locationCtrl = function (eliteApi,$ionicLoading,$scope) {
 
         var vm=this;
 

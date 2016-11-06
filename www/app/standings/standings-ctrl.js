@@ -1,7 +1,7 @@
 (function(){
 
     var app = angular.module("eliteApp");
-    var standingsCtrl = function (eliteApi) {
+    var standingsCtrl = function (eliteApi,$ionicLoading,$scope) {
 
         var vm=this;
 

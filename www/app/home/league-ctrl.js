@@ -2,7 +2,7 @@
 
     var app = angular.module("eliteApp");
     
-    var LeaguesCtrl=function(eliteApi,$state){
+    var LeaguesCtrl=function(eliteApi,$state,$scope){
         var vm =this;
         //var leagues=eliteApi.getLeague();
         //var leagueDta=eliteApi.getLeagueData();
@@ -21,7 +21,7 @@
     vm.selectLeague=function (leaguid)
     {
         //to do need fix we need send leaguid below code is not working
-        //eliteApi.setLeagueId(leaguid);
+        eliteApi.setLeagueId(leaguid);
         $state.go("app.teams")
     };
 
