@@ -2,6 +2,8 @@
 
     var eliteApi = function ($http, $ionicLoading, CacheFactory, $q) {
 
+        var tt=CacheFactory.get('leagueCache');
+
         self.leagueCache = CacheFactory.get('leagueCache');
         self.leagueDataCache = CacheFactory.get('leagueDataCache');
 
