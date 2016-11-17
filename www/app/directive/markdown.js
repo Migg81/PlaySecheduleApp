@@ -2,10 +2,10 @@
 
     var app = angular.module("eliteApp");
     
-    var markdown=function(eliteApi,[markdown]){
+    var markdown=function(eliteApi){
         var vm =this;
 
-        var converter=new Showdown.converter();
+        var converter=new showdown.Converter();
 
         var directive={
             link:link,
@@ -18,7 +18,7 @@
             attrs.$observe('markdown',function(value){
                 var markup=converter.makeHtml(value);
                 element.html(markup);
-            })
+            });
         }
     };
 
